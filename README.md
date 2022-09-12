@@ -1,2 +1,2 @@
 # tbrx
-A custom regex compiler for colorparse written in C 
+A custom 'command' compiler for colorparse written in C 
