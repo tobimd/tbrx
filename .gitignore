@@ -50,3 +50,11 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Generated directories and their contents
+/build
+/bin
+/lib
+
+# Misc
+.DS_Store
