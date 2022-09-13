@@ -50,8 +50,8 @@ ALLDIRS      := $(patsubst $(ROOTDIR)/%,%,$(call has_dir,$(TARGETDIR)) $(call ha
 INCLUDES     := -I$(PROJECT_NAME) -Ideps
 SRCFILES     := $(shell cd $(SRCDIR) && find $(SRCDIR) -name "*.c*" | sed -E 's:^$(SRCDIR)/::g')
 HEADERFILES  := $(shell cd $(SRCDIR) && find $(SRCDIR) -name "*.h*" | sed -E 's:^$(SRCDIR)/::g')
-EXTDEPFILES  := $(shell if [[ -d "$(DEPDIR)" ]]; then cd $(DEPDIR) && find $(DEPDIR) -name '*.?pp*' | sed -E 's:^$(ROOTDIR)/::g'; fi)
-TESTFILES    := $(shell if [[ -d "$(TESTDIR)" ]]; then cd $(TESTDIR) && find $(TESTDIR) -name '*.?pp*' | sed -E 's:^$(ROOTDIR)/::g'; fi)
+EXTDEPFILES  := $(shell if [[ -d "$(DEPDIR)" ]]; then cd $(DEPDIR) && find $(DEPDIR) \( -name '*.h*' -o -name '*.c*' \) | sed -E 's:^$(ROOTDIR)/::g'; fi)
+TESTFILES    := $(shell if [[ -d "$(TESTDIR)" ]]; then cd $(TESTDIR) && find $(TESTDIR) \( -name '*.h*' -o -name '*.c*' \) | sed -E 's:^$(ROOTDIR)/::g'; fi)
 OBJECTS      := $(SRCFILES:%.$(CEXT)=$(BUILDDIR)/%.o)
 DEPENDENCIES := $(OBJECTS:.o=.d)
 
